@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#734b63</color>
+    <color name="colorPrimaryDark">#58394b</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="highlightYellow">#fce4ad</color>
+    <color name="colorAccent">#fc6045</color>
+    <color name="colorGrey">#d3d3d3</color>
+    <color name="colorPassiveGrey">#f5f5f5</color>
+    <color name="colorWindowBackground">#ffffff</color>
+    <color name="colorTextBlack">#2B2C2D</color>
+    <color name="smooth_text_black">#555555</color>
+    <color name="black">#000000</color>
+
+    <!-- Translate cards theme colors -->
+    <!-- Theme 1 -->
+    <color name="translate_result_card_1_bg">#555555</color>
+    <color name="translate_result_card_1_font_color">#ffffff</color>
+    <!-- Theme 2 -->
+    <color name="translate_result_card_2_bg">#734b63</color>
+    <color name="translate_result_card_2_font_color">#fce4ad</color>
+    <!-- Theme 3 -->
+    <color name="translate_result_card_3_bg">#fce4ad</color>
+    <color name="translate_result_card_3_font_color">#555555</color>
+    <!-- Theme 4 -->
+    <color name="translate_result_card_4_bg">#d3d3d3</color>
+    <color name="translate_result_card_4_font_color">#555555</color>
+    <!-- Theme 5 -->
+    <color name="translate_result_card_5_bg">#fc6045</color>
+    <color name="translate_result_card_5_font_color">#ffffff</color>
+</resources>

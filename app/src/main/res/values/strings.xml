@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name" translatable="false">Quicku</string>
+    <string name="app_name_debug" translatable="false">Quicku-Debug</string>
+    <string name="toolbar_header_home" translatable="false">Quicku</string>
+    <string name="toolbar_header_settings">Settings</string>
+    <string name="toolbar_header_theme_selection">Card Themes</string>
+    <string name="toolbar_header_info">Info</string>
+    <string name="toolbar_header_translate_language">Translate Languages</string>
+    <string name="tv_settings_theme">Card Themes</string>
+    <string name="tv_settings_translate_language">Translate Languages</string>
+    <string name="tv_settings_clear_history">Clear Translate History</string>
+    <string name="tv_theme_1">Theme 1</string>
+    <string name="tv_theme_2">Theme 2</string>
+    <string name="tv_theme_3">Theme 3</string>
+    <string name="tv_theme_4">Theme 4</string>
+    <string name="tv_theme_5">Theme 5</string>
+    <string name="tv_translate_lang_info">By default, we detect your device\'s language and set the target translation language to this. But if you want, you can easily change it below.</string>
+    <string name="tv_set_source_lang_caption">Source Language\n(FROM)</string>
+    <string name="tv_set_target_lang_caption">Target Language\n(TO)</string>
+    <string name="tv_last_translated_words_caption">History</string>
+    <string name="tv_current_source_target_lang_info1">Current translate option:</string>
+    <string name="tv_current_source_target_lang_info2">\nYou can change it from settings.</string>
+    <string name="tv_auto_detect_source_lang_info">Detect source language automatically</string>
+    <string name="tv_powered_by_yandex" translatable="false">Powered by Yandex.Translate</string>
+    <string name="dialog_delete_all_data_message">Are you sure you want to clear?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="tv_how_to_use_quicku">How to use Quicku?</string>
+    <string name="tv_how_to_use_quicku_text">While reading something from your web browser, email app or your favorite reading app, just highlight the word that you don\’t know the meaning and tap on the share button. Select Quicku from the list and Quicku will translate it for you. It is that easy.</string>
+    <string name="tv_which_languages_supported">Which languages are supported?</string>
+    <string name="tv_which_languages_supported_text">There are many languages that Quicku supports. You can see the list in settings. By default we are detecting your device language and make the target translation language to that. But you can change it if you want from the settings menu.</string>
+    <string name="toast_receivedtext_is_empty">There is no text to translate!</string>
+    <string name="toast_no_internet_connection">There is no internet connection!</string>
+    <string name="toast_receivedtext_is_too_long">Text is too long to translate!</string>
+    <string name="toast_please_select_source_target_lang">Please set the source and target languages for translation</string>
+    <string name="toast_an_error_occured">Upps! An error occurred while translating</string>
+    <string name="toast_cant_translate_the_word">Sorry :( Can\'t translate the word</string>
+    <string name="toast_same_word_check_settings">Source and target languages are the same. Please check the language settings</string>
+    <string name="toast_something_went_wrong">Something went wrong! Please check your translation settings. Maybe source and target languages are the same.</string>
+    <string name="btn_ok">OK</string>
+    <string name="toast_cannot_detect_lang">Cannot detect the language</string>
+
+</resources>

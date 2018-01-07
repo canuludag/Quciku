@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@color/colorWindowBackground"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvRcvLastTranslatedWordItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:textSize="14sp"
+        android:text="test"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/smooth_text_black"
+        />
+
+</RelativeLayout>

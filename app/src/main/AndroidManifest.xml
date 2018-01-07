@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.quicku.translate">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:name=".root.QuickuApplication"
+        android:allowBackup="true"
+        android:icon="${appIcon}"
+        android:label="${appName}"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.translateresults.TranslateResultsActivity"
+            android:theme="@style/TransparentTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.themeselection.ThemeSelectionActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.translatelanguages.TranslateLanguageActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.info.InfoActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

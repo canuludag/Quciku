@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toolbar_header_settings">Ayarlar</string>
+    <string name="toolbar_header_info">Bilgi</string>
+    <string name="tv_settings_theme">Kart Temaları</string>
+    <string name="tv_settings_translate_language">Çeviri Dilleri</string>
+    <string name="tv_settings_clear_history">Çeviri Geçmişini Sil</string>
+    <string name="tv_theme_1">Tema 1</string>
+    <string name="tv_theme_2">Tema 2</string>
+    <string name="tv_theme_4">Tema 4</string>
+    <string name="tv_theme_3">Tema 3</string>
+    <string name="tv_theme_5">Tema 5</string>
+    <string name="toolbar_header_theme_selection">Kart Temaları</string>
+    <string name="toolbar_header_translate_language">Çeviri Dilleri</string>
+    <string name="tv_translate_lang_info">Çevirilecek dili cihazınızın dili olarak ayarladık. Fakat isterseniz aşağıdan değiştirebilirsiniz.</string>
+    <string name="tv_set_source_lang_caption">Kaynak Dil\n(BU DİLDEN)</string>
+    <string name="tv_set_target_lang_caption">Çevirilecek Dil\n(BU DİLE)</string>
+    <string name="tv_last_translated_words_caption">Geçmiş</string>
+    <string name="tv_current_source_target_lang_info1">Mevcut çeviri ayarı:</string>
+    <string name="tv_current_source_target_lang_info2">\nAyarlar ekranından değiştirebilirsiniz.</string>
+    <string name="tv_auto_detect_source_lang_info">Kaynak dili otomatik tanı</string>
+    <string name="dialog_yes">Evet</string>
+    <string name="dialog_delete_all_data_message">Geçmişi silmek istediğinizden emin misiniz?</string>
+    <string name="dialog_no">Hayır</string>
+
+    <string name="tv_how_to_use_quicku">Quicku nasıl kullanılır?</string>
+    <string name="tv_how_to_use_quicku_text">İnternetten makale okurken, yabancı dilde bir epostayı okurken veya favori okuma uygulamanızdan bir şeyler okurken anlamını bilmediğiniz kelimeler olduğunda, o kelimeyi seçip paylaş butonu ile Quicku\’ya gönderin. Quicku sizin için çevirip anında sonucu versin. İşte bu kadar kolay</string>
+    <string name="tv_which_languages_supported">Hangi diller destekleniyor?</string>
+    <string name="tv_which_languages_supported_text">Quciku bir çok çeviri dilini desteklemektedir. Tam listeyi ayarlar menüsü altından görebilirsiniz. İlk kurulumda cihazınızın dilini algılıyoruz ve hedef çeviri dilini buna göre ayarlıyoruz. Fakat eğer isterseniz ayarlar menüsü altından dilediğiniz gibi değiştirebilirsiniz.</string>
+    <string name="toast_receivedtext_is_empty">Çevirilecek bir kelime bulunamadı!</string>
+    <string name="toast_receivedtext_is_too_long">Metin çok uzun!</string>
+    <string name="toast_please_select_source_target_lang">Lütfen çeviri için kaynak ve hedef dillerinizi ayarlayın</string>
+    <string name="toast_an_error_occured">Upps! Çeviri yapılırken bir hata oluştu</string>
+    <string name="toast_cant_translate_the_word">Üzgünüz :( Kelime çevrilemedi</string>
+    <string name="toast_same_word_check_settings">Kaynak ve çeviri dilleri aynı. Lütfen dil ayarlarını kontrol ediniz</string>
+    <string name="toast_something_went_wrong">Bir şeyler ters gitti! Lütfen çeviri ayarlanızı kontrol edin. Kaynak ve çeviri dilleri aynı olabilir.</string>
+    <string name="btn_ok">TAMAM</string>
+    <string name="toast_no_internet_connection">İnternete bağlı değilsiniz!</string>
+    <string name="toast_cannot_detect_lang">Dil tespit edilemiyor</string>
+
+</resources>

@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+def keyPropertiesFile = rootProject.file("key.properties")
+def keyProperties = new Properties()
+keyProperties.load(new FileInputStream(keyPropertiesFile))
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.quicku.translate"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 2
+        versionName "1.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+
+        debug {
+            buildConfigField "String", "YANDEX_TRANSLATE_BASE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
+            buildConfigField "String", "DATABASE_PATH", "\"/data/data/com.quicku.translate.debug/databases/\""
+            debuggable true
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def date = new Date()
+                    def appName = parent.name
+                    def formattedDate = date.format('yyyyMMddHHmmss')
+                    outputFileName = "${appName}-${versionNameSuffix}-${variant.name}-vc${variant.versionCode}-v${variant.versionName}-${formattedDate}.apk"
+                }
+            }
+
+            manifestPlaceholders = [
+                    appName  : rootProject.ext.APP_NAME_DEBUG,
+                    appIcon  : "@mipmap/ic_launcher",
+            ]
+        }
+
+        release {
+            buildConfigField "String", "YANDEX_TRANSLATE_BASE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
+            buildConfigField "String", "DATABASE_PATH", "\"/data/data/com.quicku.translate/databases/\""
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def date = new Date()
+                    def appName = parent.name
+                    def formattedDate = date.format('yyyyMMddHHmmss')
+                    outputFileName = "${appName}-${variant.name}-vc${variant.versionCode}-v${variant.versionName}-${formattedDate}.apk"
+                }
+            }
+
+            manifestPlaceholders = [
+                    appName  : rootProject.ext.APP_NAME,
+                    appIcon  : "@mipmap/ic_launcher",
+            ]
+        }
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'YANDEX_TRANSLATE_API_KEY', keyProperties['yandexTranslateApiKey']
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Support Library
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+
+    // View injection
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    // Dagger 2 Dependency Injection
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    //HTTP Logging
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+
+    // Object serialization
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoTestVersion"
+}

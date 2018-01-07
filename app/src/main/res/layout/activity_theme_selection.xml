@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorWindowBackground"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/general_appbar">
+
+    </include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/translate_result_card_1">
+
+                    <TextView
+                        android:id="@+id/tvTheme1DemoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tv_theme_1"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivCheck1"
+                        android:src="@mipmap/ic_select_theme_checkmark"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvTheme1DemoText"
+                        android:layout_toStartOf="@+id/tvTheme1DemoText" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.75dp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/translate_result_card_2">
+
+                    <TextView
+                        android:id="@+id/tvTheme2DemoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tv_theme_2"
+                        android:textColor="@color/highlightYellow"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivCheck2"
+                        android:src="@mipmap/ic_select_theme_checkmark"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvTheme2DemoText"
+                        android:layout_toStartOf="@+id/tvTheme2DemoText"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.75dp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/translate_result_card_3">
+
+                    <TextView
+                        android:id="@+id/tvTheme3DemoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tv_theme_3"
+                        android:textColor="@color/smooth_text_black"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivCheck3"
+                        android:src="@mipmap/ic_select_theme_checkmark"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvTheme3DemoText"
+                        android:layout_toStartOf="@+id/tvTheme3DemoText"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.75dp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/translate_result_card_4">
+
+                    <TextView
+                        android:id="@+id/tvTheme4DemoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tv_theme_4"
+                        android:textColor="@color/smooth_text_black"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivCheck4"
+                        android:src="@mipmap/ic_select_theme_checkmark"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvTheme4DemoText"
+                        android:layout_toStartOf="@+id/tvTheme4DemoText"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.75dp"
+                android:background="@color/colorGrey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/translate_result_card_5">
+
+                    <TextView
+                        android:id="@+id/tvTheme5DemoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tv_theme_5"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivCheck5"
+                        android:src="@mipmap/ic_select_theme_checkmark"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tvTheme5DemoText"
+                        android:layout_toStartOf="@+id/tvTheme5DemoText"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
