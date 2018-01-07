@@ -8,9 +8,14 @@ Current code is working fine but I wanted to refactor and change its architectur
 
 This project uses [Yandex Translation API][1] and its requiered keys. In order to run it you have to create your own **key.properties** file and add your **key/value** parameters.
 
-*To be continued...*
+Demo
+----
+![](./art/quicku_1.png) ![](./art/quicku_3.png) ![](./art/quicku_4.png)
 
 <a href="https://play.google.com/store/apps/details?id=com.quicku.translate&hl=en">
 <img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" width="20%" />
 </a>
+
+*To be continued...*
+
 [1]: https://tech.yandex.com/translate/
