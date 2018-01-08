@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.quicku.translate.R;
 import com.quicku.translate.databases.LastTranslatedWordsDatabase;
+import com.quicku.translate.root.QuickuApplication;
 import com.quicku.translate.ui.translatelanguages.TranslateLanguageActivity;
 import com.quicku.translate.ui.info.InfoActivity;
 import com.quicku.translate.ui.settings.SettingsActivity;
@@ -24,6 +25,9 @@ import com.quicku.translate.utils.TranslateLanguageManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,13 +50,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private RcvLastTranslatedWordsAdapter rcvLastTranslatedWordsAdapter;
     private ArrayList<String> lastTranslatedWordsList;
 
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
-
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
     private ArrayList<HashMap<String, String>> lastTranslatedWordsMapList;
 
     private TranslateLanguageManager translateLanguageManager;
+
+    @Inject
+    SharedPreferences mSharedPreferences;
+    @Inject
+    SharedPreferences.Editor mPrefsEditor;
+
+    private String deviceLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +68,47 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        translateLanguageManager = new TranslateLanguageManager(this);
+        // Initialize injection for this activity
+        ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
-        appPrefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
+        // Check for initial shared preferences settins
+        checkAndSetInitialSharedPrefsSettings();
+
+        translateLanguageManager = new TranslateLanguageManager(this);
 
         createCustomToolbar();
         getAllTranslatedWordsFromDb();
         setupRecyclerView();
         setFonts();
         setClickListeners();
+    }
+
+    private void checkAndSetInitialSharedPrefsSettings() {
+        deviceLang = Locale.getDefault().getLanguage();
+
+        // Set device lang on every start
+        mPrefsEditor.putString("device_lang", deviceLang);
+        mPrefsEditor.apply();
+
+        // First time creation
+        if (!mSharedPreferences.contains("translate_card_theme")) {
+            mPrefsEditor.putInt("translate_card_theme", 0); // First theme
+            mPrefsEditor.putBoolean("isTargetLangIsDeviceLang", true);
+            mPrefsEditor.putBoolean("isSourceLangAutoDetect", true);
+            mPrefsEditor.putString("translate_source_lang", "en");
+            mPrefsEditor.putString("translate_target_lang", deviceLang);
+            mPrefsEditor.apply();
+        }
+
+        // First time creation
+        if (!mSharedPreferences.contains("isTargetLangIsDeviceLang")) {
+            mPrefsEditor.putString("translate_target_lang", deviceLang);
+            mPrefsEditor.apply();
+        }
+
+        // set on every start
+        mPrefsEditor.putBoolean("isHistoryCleared", false);
+        mPrefsEditor.apply();
     }
 
     private void getAllTranslatedWordsFromDb() {
