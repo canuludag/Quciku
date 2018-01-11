@@ -6,13 +6,15 @@ import com.quicku.translate.ui.home.HomeActivity;
 import com.quicku.translate.ui.settings.SettingsActivity;
 import com.quicku.translate.ui.themeselection.ThemeSelectionActivity;
 import com.quicku.translate.ui.translateresults.TranslateResultsActivity;
+import com.quicku.translate.utils.TranslateCardThemeModule;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {AppModule.class, SharedPrefsModule.class, TranslateApiModule.class})
+@Component(modules = {AppModule.class, SharedPrefsModule.class
+        , TranslateApiModule.class, TranslateCardThemeModule.class})
 public interface AppComponent {
     void inject(HomeActivity target);
     void inject(TranslateResultsActivity target);

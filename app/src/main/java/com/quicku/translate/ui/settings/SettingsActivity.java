@@ -44,8 +44,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
 
     @Inject
-    SharedPreferences mSharedPrefs;
-    @Inject
     SharedPreferences.Editor mPrefsEditor;
 
     @Override

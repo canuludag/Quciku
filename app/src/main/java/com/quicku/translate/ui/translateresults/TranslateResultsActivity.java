@@ -54,7 +54,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     @BindView(R.id.rlErrorArea)
     RelativeLayout rlErrorArea;
 
-    private TranslateCardThemeManager translateCardThemeManager;
     private TranslateLanguageManager translateLanguageManager;
 
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
@@ -62,6 +61,9 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     // Api service injection
     @Inject
     TranslateApiService mApiService;
+    // Card theme manager injection
+    @Inject
+    TranslateCardThemeManager mCardThemeManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,14 +85,13 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     }
 
     private void setCardThemeSettings() {
-        translateCardThemeManager = new TranslateCardThemeManager(this);
         translateLanguageManager = new TranslateLanguageManager(this);
 
         rlResultCard.setVisibility(View.INVISIBLE);
         rlErrorArea.setVisibility(View.INVISIBLE);
         rlErrorArea.setEnabled(false);
 
-        translateCardThemeManager.setActiveTheme(rlResultCard, tvTranslateResult);
+        mCardThemeManager.setActiveTheme(rlResultCard, tvTranslateResult);
     }
 
     private void setFonts() {

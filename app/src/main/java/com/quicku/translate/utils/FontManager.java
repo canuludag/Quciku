@@ -4,72 +4,39 @@ import android.app.Activity;
 import android.graphics.Typeface;
 
 public class FontManager {
-    private static Typeface robotoSlabBold;
-    private static Typeface robotoSlabLight;
-    private static Typeface robotoSlabRegular;
-    private static Typeface robotoRegular;
-    private static Typeface robotoBold;
-    private static Typeface merriweatherSansRegular;
-    private static Typeface merriweatherSansBold;
-    private static Typeface sourceSansProRegular;
-    private static Typeface sourceSansProBold;
-
     public static Typeface getRobotoSlabBold(Activity activity) {
-        robotoSlabBold = Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Bold.ttf");
-
-        return robotoSlabBold;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Bold.ttf");
     }
 
     public static Typeface getRobotoSlabLight(Activity activity) {
-        robotoSlabLight = Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Light.ttf");
-
-        return robotoSlabLight;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Light.ttf");
     }
 
-
-
     public static Typeface getRobotoSlabRegular(Activity activity) {
-        robotoSlabRegular = Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Regular.ttf");
-
-        return robotoSlabRegular;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/RobotoSlab-Regular.ttf");
     }
 
     public static Typeface getRobotoRegular(Activity activity) {
-        robotoRegular = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Regular.ttf");
-
-        return robotoRegular;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Regular.ttf");
     }
 
     public static Typeface getRobotoBold(Activity activity) {
-        robotoBold = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Bold.ttf");
-
-        return robotoBold;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Bold.ttf");
     }
 
     public static Typeface getMerriweatherSansRegular(Activity activity) {
-        merriweatherSansRegular = Typeface.createFromAsset(activity.getAssets(), "fonts/MerriweatherSans-Regular.ttf");
-
-        return merriweatherSansRegular;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/MerriweatherSans-Regular.ttf");
     }
 
     public static Typeface getMerriweatherSansBold(Activity activity) {
-        merriweatherSansBold = Typeface.createFromAsset(activity.getAssets(), "fonts/MerriweatherSans-Bold.ttf");
-
-        return merriweatherSansBold;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/MerriweatherSans-Bold.ttf");
     }
 
     public static Typeface getSourceSansProRegular(Activity activity) {
-        sourceSansProRegular = Typeface.createFromAsset(activity.getAssets(), "fonts/SourceSansPro-Regular.ttf");
-
-        return sourceSansProRegular;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/SourceSansPro-Regular.ttf");
     }
 
     public static Typeface getSourceSansProBold(Activity activity) {
-        sourceSansProBold = Typeface.createFromAsset(activity.getAssets(), "fonts/SourceSansPro-Bold.ttf");
-
-        return sourceSansProBold;
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/SourceSansPro-Bold.ttf");
     }
-
-
-
 }

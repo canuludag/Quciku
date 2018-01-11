@@ -8,6 +8,7 @@ import com.quicku.translate.di.AppComponent;
 import com.quicku.translate.di.AppModule;
 import com.quicku.translate.di.DaggerAppComponent;
 import com.quicku.translate.networking.TranslateApiModule;
+import com.quicku.translate.utils.TranslateCardThemeModule;
 
 import java.io.IOException;
 
@@ -28,6 +29,7 @@ public class QuickuApplication extends Application {
                 .appModule(new AppModule(this))
                 .translateApiModule(new TranslateApiModule())
                 .sharedPrefsModule(new SharedPrefsModule())
+                .translateCardThemeModule(new TranslateCardThemeModule())
                 .build();
 
         lastTranslatedWordsDatabase = new LastTranslatedWordsDatabase(this);
