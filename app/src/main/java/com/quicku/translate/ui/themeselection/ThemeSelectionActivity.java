@@ -10,7 +10,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.quicku.translate.R;
+import com.quicku.translate.root.QuickuApplication;
 import com.quicku.translate.utils.FontManager;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,10 +52,12 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     ImageView ivCheck4;
     @BindView(R.id.ivCheck5)
     ImageView ivCheck5;
-
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
     private TextView tvAppBarHeader;
+
+    @Inject
+    SharedPreferences mSharedPrefs;
+    @Inject
+    SharedPreferences.Editor mPrefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +65,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_theme_selection);
         ButterKnife.bind(this);
 
-        appPrefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
+        // Initialize injection for this activity
+        ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
         createCustomToolbar();
         setFonts();
@@ -79,7 +84,7 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     }
 
     private void setActiveThemeSelection() {
-        int theme = appPrefs.getInt("translate_card_theme", 0);
+        int theme = mSharedPrefs.getInt("translate_card_theme", 0);
         switch (theme) {
             case 0:
                 ivCheck1.setVisibility(View.VISIBLE);
@@ -147,8 +152,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rlTheme1:
-                appPrefsEditor.putInt("translate_card_theme", 0);
-                appPrefsEditor.apply();
+                mPrefsEditor.putInt("translate_card_theme", 0);
+                mPrefsEditor.apply();
 
                 ivCheck1.setVisibility(View.VISIBLE);
                 ivCheck2.setVisibility(View.INVISIBLE);
@@ -157,8 +162,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
                 ivCheck5.setVisibility(View.INVISIBLE);
                 break;
             case R.id.rlTheme2:
-                appPrefsEditor.putInt("translate_card_theme", 1);
-                appPrefsEditor.apply();
+                mPrefsEditor.putInt("translate_card_theme", 1);
+                mPrefsEditor.apply();
 
                 ivCheck1.setVisibility(View.INVISIBLE);
                 ivCheck2.setVisibility(View.VISIBLE);
@@ -167,8 +172,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
                 ivCheck5.setVisibility(View.INVISIBLE);
                 break;
             case R.id.rlTheme3:
-                appPrefsEditor.putInt("translate_card_theme", 2);
-                appPrefsEditor.apply();
+                mPrefsEditor.putInt("translate_card_theme", 2);
+                mPrefsEditor.apply();
 
                 ivCheck1.setVisibility(View.INVISIBLE);
                 ivCheck2.setVisibility(View.INVISIBLE);
@@ -177,8 +182,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
                 ivCheck5.setVisibility(View.INVISIBLE);
                 break;
             case R.id.rlTheme4:
-                appPrefsEditor.putInt("translate_card_theme", 3);
-                appPrefsEditor.apply();
+                mPrefsEditor.putInt("translate_card_theme", 3);
+                mPrefsEditor.apply();
 
                 ivCheck1.setVisibility(View.INVISIBLE);
                 ivCheck2.setVisibility(View.INVISIBLE);
@@ -187,8 +192,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
                 ivCheck5.setVisibility(View.INVISIBLE);
                 break;
             case R.id.rlTheme5:
-                appPrefsEditor.putInt("translate_card_theme", 4);
-                appPrefsEditor.apply();
+                mPrefsEditor.putInt("translate_card_theme", 4);
+                mPrefsEditor.apply();
 
                 ivCheck1.setVisibility(View.INVISIBLE);
                 ivCheck2.setVisibility(View.INVISIBLE);

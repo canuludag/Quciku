@@ -1,7 +1,6 @@
 package com.quicku.translate.ui.translatelanguages;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -64,9 +63,6 @@ public class TranslateLanguageActivity extends AppCompatActivity {
 
     private JSONObject jsonLangs;
 
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
-
     private TranslateLanguageManager translateLanguageManager;
     private String sourceLang, targetLang;
     private TextView tvAppBarHeader;
@@ -76,9 +72,6 @@ public class TranslateLanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translate_language);
         ButterKnife.bind(this);
-
-        appPrefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
 
         translateLanguageManager = new TranslateLanguageManager(this);
 

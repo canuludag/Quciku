@@ -13,9 +13,12 @@ import android.widget.TextView;
 
 import com.quicku.translate.R;
 import com.quicku.translate.databases.LastTranslatedWordsDatabase;
+import com.quicku.translate.root.QuickuApplication;
 import com.quicku.translate.ui.themeselection.ThemeSelectionActivity;
 import com.quicku.translate.ui.translatelanguages.TranslateLanguageActivity;
 import com.quicku.translate.utils.FontManager;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +43,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
 
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
+    @Inject
+    SharedPreferences mSharedPrefs;
+    @Inject
+    SharedPreferences.Editor mPrefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +54,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
 
-        appPrefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
+        // Initialize injection for this activity
+        ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
         createCustomToolbar();
         setFonts();
@@ -100,8 +105,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                                 lastTranslatedWordsDatabase.deleteAllData("words");
                                 lastTranslatedWordsDatabase.close();
 
-                                appPrefsEditor.putBoolean("isHistoryCleared", true);
-                                appPrefsEditor.apply();
+                                mPrefsEditor.putBoolean("isHistoryCleared", true);
+                                mPrefsEditor.apply();
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.dialog_no), new DialogInterface.OnClickListener() {

@@ -2,7 +2,6 @@ package com.quicku.translate.ui.translateresults;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -59,9 +58,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     private TranslateCardThemeManager translateCardThemeManager;
     private TranslateLanguageManager translateLanguageManager;
 
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
-
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
     private Activity mActivity;
 
@@ -80,9 +76,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
         ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
         mActivity = this;
-
-        appPrefs = getSharedPreferences("SETTINGS", MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
 
         lastTranslatedWordsDatabase = new LastTranslatedWordsDatabase(this);
         lastTranslatedWordsDatabase.openDatabase();
