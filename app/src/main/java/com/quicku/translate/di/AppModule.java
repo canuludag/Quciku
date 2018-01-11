@@ -11,7 +11,7 @@ import dagger.Provides;
 
 @Module
 public class AppModule {
-    public QuickuApplication mQuickuApplication;
+    private QuickuApplication mQuickuApplication;
 
     public AppModule(QuickuApplication quickuApplication) {
         mQuickuApplication = quickuApplication;
@@ -19,13 +19,13 @@ public class AppModule {
 
     @Singleton
     @Provides
-    public QuickuApplication provideApp() {
+    QuickuApplication provideApp() {
         return mQuickuApplication;
     }
 
     @Singleton
     @Provides
-    public Context provideContext() {
+    Context provideContext() {
         return mQuickuApplication.getApplicationContext();
     }
 }

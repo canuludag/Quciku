@@ -61,8 +61,6 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     private ArrayList<String> langKeyList;
     private ArrayList<CharSequence> adapterList;
 
-    private JSONObject jsonLangs;
-
     private TranslateLanguageManager translateLanguageManager;
     private String sourceLang, targetLang;
     private TextView tvAppBarHeader;
@@ -165,7 +163,7 @@ public class TranslateLanguageActivity extends AppCompatActivity {
         spinnerTargetLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                translateLanguageManager.setTargetLang(langKeyList.get(position).toString());
+                translateLanguageManager.setTargetLang(langKeyList.get(position));
             }
 
             @Override
@@ -190,7 +188,7 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     private void prepareJsonData() {
         try {
             String jsonString = loadJSONFromAsset();
-            jsonLangs = new JSONObject(jsonString);
+            JSONObject jsonLangs = new JSONObject(jsonString);
             HashMap<String, String> langMap = new HashMap<>();
             JSONArray namesArray = jsonLangs.names(); // [en, tr, zh, ar]
 

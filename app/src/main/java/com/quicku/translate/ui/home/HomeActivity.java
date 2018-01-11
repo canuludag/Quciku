@@ -60,8 +60,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Inject
     SharedPreferences.Editor mPrefsEditor;
 
-    private String deviceLang;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void checkAndSetInitialSharedPrefsSettings() {
-        deviceLang = Locale.getDefault().getLanguage();
+        String deviceLang = Locale.getDefault().getLanguage();
 
         // Set device lang on every start
         mPrefsEditor.putString("device_lang", deviceLang);

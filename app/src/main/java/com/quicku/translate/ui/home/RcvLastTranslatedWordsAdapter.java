@@ -26,7 +26,7 @@ public class RcvLastTranslatedWordsAdapter extends RecyclerView.Adapter<RcvLastT
             super(itemView);
 
             // Define your items in here
-            tvRcvLastTranslatedWordItem = (TextView) itemView.findViewById(R.id.tvRcvLastTranslatedWordItem);
+            tvRcvLastTranslatedWordItem = itemView.findViewById(R.id.tvRcvLastTranslatedWordItem);
 
         }
     }

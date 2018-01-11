@@ -1,6 +1,5 @@
 package com.quicku.translate.ui.translateresults;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -59,7 +58,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     private TranslateLanguageManager translateLanguageManager;
 
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
-    private Activity mActivity;
 
     // Api service injection
     @Inject
@@ -74,8 +72,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
 
         // Initialize injection for this activity
         ((QuickuApplication) getApplication()).getAppComponent().inject(this);
-
-        mActivity = this;
 
         lastTranslatedWordsDatabase = new LastTranslatedWordsDatabase(this);
         lastTranslatedWordsDatabase.openDatabase();

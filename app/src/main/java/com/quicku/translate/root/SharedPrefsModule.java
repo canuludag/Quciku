@@ -13,12 +13,11 @@ import dagger.Provides;
 
 @Module(includes = {AppModule.class})
 public class SharedPrefsModule {
-    public SharedPreferences mSharedPreferences;
-    public SharedPreferences.Editor mPrefsEditor;
+    private SharedPreferences mSharedPreferences;
 
     @Singleton
     @Provides
-    public SharedPreferences provideSharedPrefs(Context context) {
+    SharedPreferences provideSharedPrefs(Context context) {
         mSharedPreferences = context.getSharedPreferences(Constants.SETTINGS_PREF, Context.MODE_PRIVATE);
 
         return mSharedPreferences;
@@ -26,9 +25,9 @@ public class SharedPrefsModule {
 
     @Singleton
     @Provides
-    public SharedPreferences.Editor providePrefsEditor() {
-        mPrefsEditor = mSharedPreferences.edit();
+    SharedPreferences.Editor providePrefsEditor() {
+        SharedPreferences.Editor prefsEditor = mSharedPreferences.edit();
 
-        return mPrefsEditor;
+        return prefsEditor;
     }
 }

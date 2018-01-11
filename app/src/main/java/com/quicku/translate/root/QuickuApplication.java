@@ -1,7 +1,6 @@
 package com.quicku.translate.root;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 import android.database.SQLException;
 
 import com.quicku.translate.databases.LastTranslatedWordsDatabase;
@@ -16,9 +15,6 @@ public class QuickuApplication extends Application {
 
     private static QuickuApplication mInstance;
     private AppComponent mAppComponent;
-
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
 
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
 
