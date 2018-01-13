@@ -58,6 +58,8 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     SharedPreferences mSharedPrefs;
     @Inject
     SharedPreferences.Editor mPrefsEditor;
+    @Inject
+    FontManager mFontManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,13 +127,13 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     }
 
     private void setFonts() {
-        tvTheme1DemoText.setTypeface(FontManager.getRobotoSlabRegular(this));
-        tvTheme2DemoText.setTypeface(FontManager.getRobotoSlabRegular(this));
-        tvTheme3DemoText.setTypeface(FontManager.getRobotoSlabRegular(this));
-        tvTheme4DemoText.setTypeface(FontManager.getRobotoSlabRegular(this));
-        tvTheme5DemoText.setTypeface(FontManager.getRobotoSlabRegular(this));
+        tvTheme1DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvTheme2DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvTheme3DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvTheme4DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvTheme5DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
 
-        tvAppBarHeader.setTypeface(FontManager.getRobotoBold(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
     }
 
     private void setClickListeners() {

@@ -45,6 +45,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     @Inject
     SharedPreferences.Editor mPrefsEditor;
+    @Inject
+    FontManager mFontManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +66,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setFonts() {
-        tvAppBarHeader.setTypeface(FontManager.getRobotoBold(this));
-        tvSettingsCardThemes.setTypeface(FontManager.getRobotoRegular(this));
-        tvSettingsTranslateLanguage.setTypeface(FontManager.getRobotoRegular(this));
-        tvSettingsClearHistory.setTypeface(FontManager.getRobotoRegular(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
+        tvSettingsCardThemes.setTypeface(mFontManager.getRobotoRegular(this));
+        tvSettingsTranslateLanguage.setTypeface(mFontManager.getRobotoRegular(this));
+        tvSettingsClearHistory.setTypeface(mFontManager.getRobotoRegular(this));
     }
 
     private void setClickListeners() {

@@ -59,6 +59,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     SharedPreferences mSharedPreferences;
     @Inject
     SharedPreferences.Editor mPrefsEditor;
+    @Inject
+    FontManager mFontManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +130,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void createCustomToolbar() {
         TextView tvAppBarHeader = toolbar.findViewById(R.id.tvAppBarHeader);
-        tvAppBarHeader.setTypeface(FontManager.getRobotoSlabBold(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoSlabBold(this));
         tvAppBarHeader.setText(getResources().getString(R.string.toolbar_header_home));
 
         ivToolbarSettings = toolbar.findViewById(R.id.ivToolbarSettings);
@@ -138,8 +140,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setFonts() {
-        tvLastTranslatedWordsCapiton.setTypeface(FontManager.getRobotoBold(this));
-        tvCurrentSourceAndTargetLangs.setTypeface(FontManager.getRobotoRegular(this));
+        tvLastTranslatedWordsCapiton.setTypeface(mFontManager.getRobotoBold(this));
+        tvCurrentSourceAndTargetLangs.setTypeface(mFontManager.getRobotoRegular(this));
 
         tvCurrentSourceAndTargetLangs.setText(getResources().getString(R.string.tv_current_source_target_lang_info1) + " "
                 + translateLanguageManager.getSourceLang() + "-" + translateLanguageManager.getTargetLang()

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.quicku.translate.R;
+import com.quicku.translate.root.QuickuApplication;
 import com.quicku.translate.utils.FontManager;
 import com.quicku.translate.utils.TranslateLanguageManager;
 
@@ -30,6 +31,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Locale;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,11 +68,16 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     private String sourceLang, targetLang;
     private TextView tvAppBarHeader;
 
+    @Inject
+    FontManager mFontManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translate_language);
         ButterKnife.bind(this);
+
+        ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
         translateLanguageManager = new TranslateLanguageManager(this);
 
@@ -89,12 +97,12 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        tvTranslateLangInfo.setTypeface(FontManager.getRobotoRegular(this));
-        tvSetSourceLangCaption.setTypeface(FontManager.getRobotoRegular(this));
-        tvSetTargetLangCaption.setTypeface(FontManager.getRobotoRegular(this));
-        tvAutoDetectTargetLangInfo.setTypeface(FontManager.getRobotoRegular(this));
-        tvPoweredByYandex.setTypeface(FontManager.getRobotoRegular(this));
-        tvAppBarHeader.setTypeface(FontManager.getRobotoBold(this));
+        tvTranslateLangInfo.setTypeface(mFontManager.getRobotoRegular(this));
+        tvSetSourceLangCaption.setTypeface(mFontManager.getRobotoRegular(this));
+        tvSetTargetLangCaption.setTypeface(mFontManager.getRobotoRegular(this));
+        tvAutoDetectTargetLangInfo.setTypeface(mFontManager.getRobotoRegular(this));
+        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
     }
 
     private void setSourceLangAlpha() {
@@ -219,9 +227,9 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     }
 
     public String loadJSONFromAsset() {
-        String jsonString = null;
+        String jsonString;
         try {
-            InputStream is = null;
+            InputStream is;
             if (Locale.getDefault().getLanguage().equals("en")) {
                 is = getAssets().open("jsonfiles/langs_en.json");
             } else if (Locale.getDefault().getLanguage().equals("tr")) {

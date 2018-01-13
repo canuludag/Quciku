@@ -64,6 +64,8 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     // Card theme manager injection
     @Inject
     TranslateCardThemeManager mCardThemeManager;
+    @Inject
+    FontManager mFontManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,9 +97,9 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     }
 
     private void setFonts() {
-        tvTranslateResult.setTypeface(FontManager.getRobotoSlabRegular(this));
-        tvErrorText.setTypeface(FontManager.getRobotoRegular(this));
-        tvPoweredByYandex.setTypeface(FontManager.getRobotoRegular(this));
+        tvTranslateResult.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvErrorText.setTypeface(mFontManager.getRobotoRegular(this));
+        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular(this));
     }
 
     private void setClickListeners() {
