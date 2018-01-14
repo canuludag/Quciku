@@ -22,12 +22,14 @@ public class RcvLastTranslatedWordsAdapter extends RecyclerView.Adapter<RcvLastT
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvRcvLastTranslatedWordItem;
+        TextView tvRcvLastTranslatedWordItem2;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             // Define your items in here
             tvRcvLastTranslatedWordItem = itemView.findViewById(R.id.tvRcvLastTranslatedWordItem);
+            tvRcvLastTranslatedWordItem2 = itemView.findViewById(R.id.tvRcvLastTranslatedWordItem2);
 
         }
     }
@@ -51,8 +53,13 @@ public class RcvLastTranslatedWordsAdapter extends RecyclerView.Adapter<RcvLastT
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         // set your items here
-        holder.tvRcvLastTranslatedWordItem.setTypeface(mFontManager.getRobotoSlabRegular());
-        holder.tvRcvLastTranslatedWordItem.setText(lastTranslatedWordsList.get(position));
+        holder.tvRcvLastTranslatedWordItem.setTypeface(mFontManager.getRobotoSlabBold());
+        holder.tvRcvLastTranslatedWordItem2.setTypeface(mFontManager.getRobotoSlabRegular());
+        String[] wordPair = lastTranslatedWordsList.get(position).split(" = ");
+        String word = wordPair[0];
+        String wordTranslation = wordPair[1];
+        holder.tvRcvLastTranslatedWordItem.setText(word);
+        holder.tvRcvLastTranslatedWordItem2.setText(wordTranslation);
 
     }
 
