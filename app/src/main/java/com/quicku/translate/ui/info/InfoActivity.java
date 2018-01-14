@@ -43,15 +43,15 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        tvHowToUseQuickuCaption.setTypeface(mFontManager.getRobotoBold(this));
-        tvWhichLanguagesSupportedCaption.setTypeface(mFontManager.getRobotoBold(this));
-        tvHowToUseQuickuText.setTypeface(mFontManager.getRobotoRegular(this));
-        tvWhichLanguagesSupportedText.setTypeface(mFontManager.getRobotoRegular(this));
+        tvHowToUseQuickuCaption.setTypeface(mFontManager.getRobotoBold());
+        tvWhichLanguagesSupportedCaption.setTypeface(mFontManager.getRobotoBold());
+        tvHowToUseQuickuText.setTypeface(mFontManager.getRobotoRegular());
+        tvWhichLanguagesSupportedText.setTypeface(mFontManager.getRobotoRegular());
     }
 
     private void createCustomToolbar() {
         TextView tvAppBarHeader = toolbar.findViewById(R.id.tvAppBarHeader);
-        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold());
         tvAppBarHeader.setText(getResources().getString(R.string.toolbar_header_info));
         setSupportActionBar(toolbar);
     }

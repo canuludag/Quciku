@@ -3,40 +3,50 @@ package com.quicku.translate.utils;
 import android.content.Context;
 import android.graphics.Typeface;
 
+import javax.inject.Inject;
+
 public class FontManager {
-    public Typeface getRobotoSlabBold(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Bold.ttf");
+
+    private Context mContext;
+
+    @Inject
+    public FontManager(Context context) {
+        mContext = context;
     }
 
-    public Typeface getRobotoSlabLight(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Light.ttf");
+    public Typeface getRobotoSlabBold() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/RobotoSlab-Bold.ttf");
     }
 
-    public Typeface getRobotoSlabRegular(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/RobotoSlab-Regular.ttf");
+    public Typeface getRobotoSlabLight() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/RobotoSlab-Light.ttf");
     }
 
-    public Typeface getRobotoRegular(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf");
+    public Typeface getRobotoSlabRegular() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/RobotoSlab-Regular.ttf");
     }
 
-    public Typeface getRobotoBold(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Bold.ttf");
+    public Typeface getRobotoRegular() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/Roboto-Regular.ttf");
     }
 
-    public Typeface getMerriweatherSansRegular(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/MerriweatherSans-Regular.ttf");
+    public Typeface getRobotoBold() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/Roboto-Bold.ttf");
     }
 
-    public Typeface getMerriweatherSansBold(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/MerriweatherSans-Bold.ttf");
+    public Typeface getMerriweatherSansRegular() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/MerriweatherSans-Regular.ttf");
     }
 
-    public Typeface getSourceSansProRegular(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Regular.ttf");
+    public Typeface getMerriweatherSansBold() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/MerriweatherSans-Bold.ttf");
     }
 
-    public Typeface getSourceSansProBold(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "fonts/SourceSansPro-Bold.ttf");
+    public Typeface getSourceSansProRegular() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/SourceSansPro-Regular.ttf");
+    }
+
+    public Typeface getSourceSansProBold() {
+        return Typeface.createFromAsset(mContext.getAssets(), "fonts/SourceSansPro-Bold.ttf");
     }
 }

@@ -127,13 +127,13 @@ public class ThemeSelectionActivity extends AppCompatActivity implements View.On
     }
 
     private void setFonts() {
-        tvTheme1DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
-        tvTheme2DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
-        tvTheme3DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
-        tvTheme4DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
-        tvTheme5DemoText.setTypeface(mFontManager.getRobotoSlabRegular(this));
+        tvTheme1DemoText.setTypeface(mFontManager.getRobotoSlabRegular());
+        tvTheme2DemoText.setTypeface(mFontManager.getRobotoSlabRegular());
+        tvTheme3DemoText.setTypeface(mFontManager.getRobotoSlabRegular());
+        tvTheme4DemoText.setTypeface(mFontManager.getRobotoSlabRegular());
+        tvTheme5DemoText.setTypeface(mFontManager.getRobotoSlabRegular());
 
-        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold());
     }
 
     private void setClickListeners() {

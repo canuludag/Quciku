@@ -54,8 +54,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     @BindView(R.id.rlErrorArea)
     RelativeLayout rlErrorArea;
 
-    private TranslateLanguageManager translateLanguageManager;
-
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
 
     // Api service injection
@@ -66,6 +64,8 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     TranslateCardThemeManager mCardThemeManager;
     @Inject
     FontManager mFontManager;
+    @Inject
+    TranslateLanguageManager mLanguageManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +87,6 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     }
 
     private void setCardThemeSettings() {
-        translateLanguageManager = new TranslateLanguageManager(this);
 
         rlResultCard.setVisibility(View.INVISIBLE);
         rlErrorArea.setVisibility(View.INVISIBLE);
@@ -97,9 +96,9 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     }
 
     private void setFonts() {
-        tvTranslateResult.setTypeface(mFontManager.getRobotoSlabRegular(this));
-        tvErrorText.setTypeface(mFontManager.getRobotoRegular(this));
-        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular(this));
+        tvTranslateResult.setTypeface(mFontManager.getRobotoSlabRegular());
+        tvErrorText.setTypeface(mFontManager.getRobotoRegular());
+        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular());
     }
 
     private void setClickListeners() {
@@ -145,7 +144,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
                         if (receivedText.trim().length() > 0) {
                             String cleanText = cleanSharedTranslateText(receivedText);
                             if (cleanText.length() <= 40) {
-                                if (translateLanguageManager.getSourceLangAutoDetect()) {
+                                if (mLanguageManager.getSourceLangAutoDetect()) {
                                     detectHighlightedTextLang(cleanText);
                                 } else {
                                     translateHighlightedText(cleanText);
@@ -183,7 +182,7 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
             public void onResponse(Call<LanguageDetectResponse> call, Response<LanguageDetectResponse> response) {
                 LanguageDetectResponse languageDetectResponse = response.body();
                 if (languageDetectResponse != null && response.isSuccessful() && response.code() == 200) {
-                    translateLanguageManager.setSourceLang(languageDetectResponse.getLang());
+                    mLanguageManager.setSourceLang(languageDetectResponse.getLang());
                     translateHighlightedText(text);
                 }
 
@@ -198,8 +197,8 @@ public class TranslateResultsActivity extends AppCompatActivity implements View.
     }
 
     private void translateHighlightedText(final String text) {
-        final String targetLang = translateLanguageManager.getTargetLang();
-        final String sourceLang = translateLanguageManager.getSourceLang();
+        final String targetLang = mLanguageManager.getTargetLang();
+        final String sourceLang = mLanguageManager.getSourceLang();
         String lang = sourceLang + "-" + targetLang;
 
         threadTimeout.start();

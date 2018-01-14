@@ -16,7 +16,7 @@ public class TranslateCardThemeManager {
     private SharedPreferences mSharedPrefs;
 
     @Inject
-    public TranslateCardThemeManager(Context context, SharedPreferences sharedPreferences) {
+    TranslateCardThemeManager(Context context, SharedPreferences sharedPreferences) {
         mContext = context;
         mSharedPrefs = sharedPreferences;
     }

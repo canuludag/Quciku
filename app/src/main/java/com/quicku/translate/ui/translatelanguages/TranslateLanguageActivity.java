@@ -64,12 +64,13 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     private ArrayList<String> langKeyList;
     private ArrayList<CharSequence> adapterList;
 
-    private TranslateLanguageManager translateLanguageManager;
     private String sourceLang, targetLang;
     private TextView tvAppBarHeader;
 
     @Inject
     FontManager mFontManager;
+    @Inject
+    TranslateLanguageManager mLanguageManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +80,8 @@ public class TranslateLanguageActivity extends AppCompatActivity {
 
         ((QuickuApplication) getApplication()).getAppComponent().inject(this);
 
-        translateLanguageManager = new TranslateLanguageManager(this);
-
-        targetLang = translateLanguageManager.getTargetLang();
-        sourceLang = translateLanguageManager.getSourceLang();
+        targetLang = mLanguageManager.getTargetLang();
+        sourceLang = mLanguageManager.getSourceLang();
 
         langList = new ArrayList<>();
         langKeyList = new ArrayList<>();
@@ -97,16 +96,16 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        tvTranslateLangInfo.setTypeface(mFontManager.getRobotoRegular(this));
-        tvSetSourceLangCaption.setTypeface(mFontManager.getRobotoRegular(this));
-        tvSetTargetLangCaption.setTypeface(mFontManager.getRobotoRegular(this));
-        tvAutoDetectTargetLangInfo.setTypeface(mFontManager.getRobotoRegular(this));
-        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular(this));
-        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
+        tvTranslateLangInfo.setTypeface(mFontManager.getRobotoRegular());
+        tvSetSourceLangCaption.setTypeface(mFontManager.getRobotoRegular());
+        tvSetTargetLangCaption.setTypeface(mFontManager.getRobotoRegular());
+        tvAutoDetectTargetLangInfo.setTypeface(mFontManager.getRobotoRegular());
+        tvPoweredByYandex.setTypeface(mFontManager.getRobotoRegular());
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold());
     }
 
     private void setSourceLangAlpha() {
-        if (translateLanguageManager.getSourceLangAutoDetect()) {
+        if (mLanguageManager.getSourceLangAutoDetect()) {
             llSourceLangSettingContainer.setAlpha(0.1f);
         } else {
             llSourceLangSettingContainer.setAlpha(1f);
@@ -126,15 +125,15 @@ public class TranslateLanguageActivity extends AppCompatActivity {
     }
 
     private void setCheckBoxCheckedListeners() {
-        cbAutoDetectTargetLang.setChecked(translateLanguageManager.getSourceLangAutoDetect());
+        cbAutoDetectTargetLang.setChecked(mLanguageManager.getSourceLangAutoDetect());
         cbAutoDetectTargetLang.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    translateLanguageManager.setSourceLangAutoDetect(true);
+                    mLanguageManager.setSourceLangAutoDetect(true);
                     llSourceLangSettingContainer.setAlpha(0.1f);
                 } else {
-                    translateLanguageManager.setSourceLangAutoDetect(false);
+                    mLanguageManager.setSourceLangAutoDetect(false);
                     llSourceLangSettingContainer.setAlpha(1f);
                     Toast.makeText(TranslateLanguageActivity.this,
                             getResources().getString(R.string.toast_please_select_source_target_lang), Toast.LENGTH_LONG).show();
@@ -153,7 +152,7 @@ public class TranslateLanguageActivity extends AppCompatActivity {
         spinnerSourceLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                translateLanguageManager.setSourceLang(langKeyList.get(position));
+                mLanguageManager.setSourceLang(langKeyList.get(position));
             }
 
             @Override
@@ -171,7 +170,7 @@ public class TranslateLanguageActivity extends AppCompatActivity {
         spinnerTargetLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                translateLanguageManager.setTargetLang(langKeyList.get(position));
+                mLanguageManager.setTargetLang(langKeyList.get(position));
             }
 
             @Override

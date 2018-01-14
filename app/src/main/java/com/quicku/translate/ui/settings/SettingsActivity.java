@@ -66,10 +66,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setFonts() {
-        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold(this));
-        tvSettingsCardThemes.setTypeface(mFontManager.getRobotoRegular(this));
-        tvSettingsTranslateLanguage.setTypeface(mFontManager.getRobotoRegular(this));
-        tvSettingsClearHistory.setTypeface(mFontManager.getRobotoRegular(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoBold());
+        tvSettingsCardThemes.setTypeface(mFontManager.getRobotoRegular());
+        tvSettingsTranslateLanguage.setTypeface(mFontManager.getRobotoRegular());
+        tvSettingsClearHistory.setTypeface(mFontManager.getRobotoRegular());
     }
 
     private void setClickListeners() {

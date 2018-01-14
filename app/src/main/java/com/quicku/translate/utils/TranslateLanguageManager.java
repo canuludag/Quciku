@@ -1,71 +1,64 @@
 package com.quicku.translate.utils;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
+
+import javax.inject.Inject;
 
 
 public class TranslateLanguageManager {
-    private Activity activity;
 
-    public String deviceLang;
-    public String sourceLang;
-    public String targetLang;
-    public boolean isSourceLangAutoDetect = true;
+    private String deviceLang;
+    private boolean isSourceLangAutoDetect = true;
 
-    private SharedPreferences appPrefs;
-    private SharedPreferences.Editor appPrefsEditor;
+    private SharedPreferences mAppPrefs;
+    private SharedPreferences.Editor mPrefsEditor;
 
-    public TranslateLanguageManager(Activity a) {
-
-        this.activity = a;
-
-        appPrefs = activity.getSharedPreferences("SETTINGS", activity.MODE_PRIVATE);
-        appPrefsEditor = appPrefs.edit();
-
+    @Inject
+    public TranslateLanguageManager(SharedPreferences sharedPrefs) {
+        mAppPrefs = sharedPrefs;
+        mPrefsEditor = mAppPrefs.edit();
     }
 
     public void setDeviceLang(String language) {
-        appPrefsEditor.putString("device_lang", language);
-        appPrefsEditor.apply();
+        mPrefsEditor.putString("device_lang", language);
+        mPrefsEditor.apply();
     }
 
     public String getDeviceLang() {
-        deviceLang = appPrefs.getString("device_lang", "en");
+        deviceLang = mAppPrefs.getString("device_lang", "en");
 
         return deviceLang;
     }
 
     public void setSourceLang(String language) {
-        appPrefsEditor.putString("translate_source_lang", language);
-        appPrefsEditor.apply();
+        mPrefsEditor.putString("translate_source_lang", language);
+        mPrefsEditor.apply();
     }
 
     public String getSourceLang() {
-        sourceLang = appPrefs.getString("translate_source_lang", "en");
 
-        return sourceLang;
+        return mAppPrefs.getString("translate_source_lang", "en");
     }
 
     public String getTargetLang() {
-        targetLang = appPrefs.getString("translate_target_lang", deviceLang);
 
-        return targetLang;
+        return mAppPrefs.getString("translate_target_lang", deviceLang);
     }
 
     public void setTargetLang(String language) {
-        appPrefsEditor.putString("translate_target_lang", language);
-        appPrefsEditor.apply();
+        mPrefsEditor.putString("translate_target_lang", language);
+        mPrefsEditor.apply();
     }
 
     public void setSourceLangAutoDetect(boolean status) {
         isSourceLangAutoDetect = status;
-        appPrefsEditor.putBoolean("isSourceLangAutoDetect", isSourceLangAutoDetect);
-        appPrefsEditor.apply();
+        mPrefsEditor.putBoolean("isSourceLangAutoDetect", isSourceLangAutoDetect);
+        mPrefsEditor.apply();
 
     }
 
     public boolean getSourceLangAutoDetect() {
-        isSourceLangAutoDetect = appPrefs.getBoolean("isSourceLangAutoDetect", true);
+        isSourceLangAutoDetect = mAppPrefs.getBoolean("isSourceLangAutoDetect", true);
 
         return isSourceLangAutoDetect;
     }

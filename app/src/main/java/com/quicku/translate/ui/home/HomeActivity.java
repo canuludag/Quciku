@@ -53,14 +53,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private LastTranslatedWordsDatabase lastTranslatedWordsDatabase;
     private ArrayList<HashMap<String, String>> lastTranslatedWordsMapList;
 
-    private TranslateLanguageManager translateLanguageManager;
-
     @Inject
     SharedPreferences mSharedPreferences;
     @Inject
     SharedPreferences.Editor mPrefsEditor;
     @Inject
     FontManager mFontManager;
+    @Inject
+    TranslateLanguageManager mLanguageManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +73,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         // Check for initial shared preferences settins
         checkAndSetInitialSharedPrefsSettings();
-
-        translateLanguageManager = new TranslateLanguageManager(this);
 
         createCustomToolbar();
         getAllTranslatedWordsFromDb();
@@ -130,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void createCustomToolbar() {
         TextView tvAppBarHeader = toolbar.findViewById(R.id.tvAppBarHeader);
-        tvAppBarHeader.setTypeface(mFontManager.getRobotoSlabBold(this));
+        tvAppBarHeader.setTypeface(mFontManager.getRobotoSlabBold());
         tvAppBarHeader.setText(getResources().getString(R.string.toolbar_header_home));
 
         ivToolbarSettings = toolbar.findViewById(R.id.ivToolbarSettings);
@@ -140,11 +138,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setFonts() {
-        tvLastTranslatedWordsCapiton.setTypeface(mFontManager.getRobotoBold(this));
-        tvCurrentSourceAndTargetLangs.setTypeface(mFontManager.getRobotoRegular(this));
+        tvLastTranslatedWordsCapiton.setTypeface(mFontManager.getRobotoBold());
+        tvCurrentSourceAndTargetLangs.setTypeface(mFontManager.getRobotoRegular());
 
         tvCurrentSourceAndTargetLangs.setText(getResources().getString(R.string.tv_current_source_target_lang_info1) + " "
-                + translateLanguageManager.getSourceLang() + "-" + translateLanguageManager.getTargetLang()
+                + mLanguageManager.getSourceLang() + "-" + mLanguageManager.getTargetLang()
                 + getResources().getString(R.string.tv_current_source_target_lang_info2));
     }
 
@@ -152,7 +150,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL, false);
         rcvLastTranslatedWords.setLayoutManager(linearLayoutManager);
-        rcvLastTranslatedWordsAdapter = new RcvLastTranslatedWordsAdapter(this, lastTranslatedWordsList);
+        rcvLastTranslatedWordsAdapter = new RcvLastTranslatedWordsAdapter(lastTranslatedWordsList, mFontManager);
         rcvLastTranslatedWords.setAdapter(rcvLastTranslatedWordsAdapter);
     }
 
@@ -210,7 +208,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         rcvLastTranslatedWordsAdapter.notifyDataSetChanged();
 
         tvCurrentSourceAndTargetLangs.setText(getResources().getString(R.string.tv_current_source_target_lang_info1) + " "
-                + translateLanguageManager.getSourceLang() + "-" + translateLanguageManager.getTargetLang()
+                + mLanguageManager.getSourceLang() + "-" + mLanguageManager.getTargetLang()
                 + getResources().getString(R.string.tv_current_source_target_lang_info2));
 
     }
