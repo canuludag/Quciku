@@ -34,18 +34,14 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
     private static String COLUMN_WORDS_TEXT = Constants.COLUMN_WORDS_TEXT;
     // Database path in the assets
     private static String DATABASE_ASSETS_PATH = Constants.DATABASE_ASSETS_PATH;
-
     // New database
     private SQLiteDatabase lastTranslatedWordsDb;
-
     private final Context context;
 
     // Default constructor
     public LastTranslatedWordsDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
         this.context = context;
-
     }
 
     // Create a new database and get the data from DBWordlist.sqlite. Insert it
@@ -57,25 +53,17 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
         boolean isDatabaseExist = checkDatabase();
 
         if (isDatabaseExist) {
-
             // Database already exist. So don't need to re-create it.
-
         } else {
-
             // With this method we'll be able create new empty database so we
             // can fill it with our own DBWordlist.sqlite database
             this.getReadableDatabase();
 
             try {
-
                 copyDatabase();
-
             } catch (IOException e) {
-
                 throw new Error("Error copying database");
-
             }
-
         }
     }
 
@@ -85,12 +73,9 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
         SQLiteDatabase controlDatabase = null;
 
         try {
-
             String controlDatabasePath = DATABASE_PATH + DATABASE_NAME;
-
             controlDatabase = SQLiteDatabase.openDatabase(controlDatabasePath,
                     null, SQLiteDatabase.OPEN_READWRITE);
-
         } catch (SQLException sqle) {
 
         }
@@ -110,13 +95,10 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
 
         // Open local database as an inputstream
         InputStream isDatabase = context.getAssets().open(DATABASE_ASSETS_PATH);
-
         // Path of newly created empty database
         String newDatabasePath = DATABASE_PATH + DATABASE_NAME;
-
         // Open database as an output stream
         OutputStream osDatabase = new FileOutputStream(newDatabasePath);
-
         // transfer bytes from the inputfile to the outputfile
         byte[] buffer = new byte[1024];
         int length;
@@ -170,12 +152,9 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
     public void insertWord(String tableName, HashMap<String, String> queryValues) {
         // Getting the database that exist. It's read and writable
         SQLiteDatabase database = this.getWritableDatabase();
-
         String word = queryValues.get(COLUMN_WORDS_TEXT);
-
         String checkIfWordExistQuery = "SELECT * FROM " + tableName
                 + " WHERE " + COLUMN_WORDS_TEXT + "='" + word + "'";
-
         Cursor c = database
                 .rawQuery(checkIfWordExistQuery, null);
 
@@ -197,12 +176,12 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
             // then insert the data into table
             long result = database.insert(tableName, null, contentValues);
 
-            Log.i("DATABASE","Result: " + result);
+            Log.i("DATABASE", "Result: " + result);
             Log.d("DATABASE", "getAllWords: " + getAllWords(tableName).size());
 
             database.close();
 
-        }else{
+        } else {
             database.close();
         }
     }
@@ -211,7 +190,6 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
     // For deleting every row inside the database
     public void deleteAllData(String tableName) {
         SQLiteDatabase database = this.getWritableDatabase();
-
         // just give the name of the table and give other paramaters null
         database.delete(tableName, null, null);
         database.close();
@@ -221,9 +199,7 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
     public ArrayList<HashMap<String, String>> getAllWords(String tableName) {
         // List for storing data
         ArrayList<HashMap<String, String>> wordsArrayList = new ArrayList<>();
-
         String selectAllWordsQuery = "SELECT * FROM " + tableName + " ORDER by " + COLUMN_WORDS_DATE + " DESC";
-
         SQLiteDatabase database = this.getReadableDatabase();
 
         // get all the data inside Cursor object
@@ -280,13 +256,9 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
 
             do {
-
                 HashMap<String, String> wordMap = new HashMap<>();
-
                 wordMap.put(COLUMN_WORDS_TEXT, cursor.getString(0));
-
                 latestWordsList.add(wordMap);
-
             } while (cursor.moveToNext());
 
             cursor.close();
@@ -295,39 +267,30 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
         database.close();
 
         return latestWordsList;
-
     }
 
     // For getting only one row of data from database
     public HashMap<String, String> getWord(String tableName, String word) {
 
         HashMap<String, String> wordMap = new HashMap<>();
-
         SQLiteDatabase database = this.getReadableDatabase();
 
         switch (tableName) {
             case "words_latest":
-
                 String selectWordQueryLatest = "SELECT * FROM " + tableName
                         + " WHERE " + COLUMN_WORDS_TEXT + "='" + word + "'";
-
                 Cursor cursorLatest = database
                         .rawQuery(selectWordQueryLatest, null);
 
                 if (cursorLatest.moveToFirst()) {
                     do {
-
                         wordMap.put(COLUMN_WORDS_TEXT, cursorLatest.getString(0));
-
                     } while (cursorLatest.moveToNext());
-
                     cursorLatest.close();
 
                 }
 
                 break;
-
-
         }
 
         database.close();
@@ -335,5 +298,4 @@ public class LastTranslatedWordsDatabase extends SQLiteOpenHelper {
         return wordMap;
 
     }
-
 }

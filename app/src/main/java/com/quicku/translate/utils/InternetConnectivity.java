@@ -10,9 +10,13 @@ public class InternetConnectivity {
 	/**
 	 * Get the network info
 	 */
-	public static NetworkInfo getNetworkInfo(Context context){
+	private static NetworkInfo getNetworkInfo(Context context){
 	    ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-	    return cm.getActiveNetworkInfo();
+		if (cm != null) {
+			return cm.getActiveNetworkInfo();
+		} else {
+			return null;
+		}
 	}
 	
 	/**
@@ -50,7 +54,7 @@ public class InternetConnectivity {
 	/**
 	 * Check if the connection is fast
 	 */
-	public static boolean isConnectionFast(int type, int subType){
+	private static boolean isConnectionFast(int type, int subType){
 		if(type==ConnectivityManager.TYPE_WIFI){
 			return true;
 		}else if(type==ConnectivityManager.TYPE_MOBILE){
